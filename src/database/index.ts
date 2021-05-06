@@ -11,3 +11,4 @@ getConnectionOptions().then(options => {
         ...options,
     });
 });
+
