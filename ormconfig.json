@@ -1,10 +1,9 @@
 {
     "type": "postgres",
-    "port": 5432,
+    "port": 5437,
     "host": "localhost",
-    "username": "docker",
-    "password": "ignite",
-    "database": "rentx",
+    "username": "postgres",
+    "password": "docker",
     "migrations": [
         "./src/database/migrations/*.ts"
     ],
