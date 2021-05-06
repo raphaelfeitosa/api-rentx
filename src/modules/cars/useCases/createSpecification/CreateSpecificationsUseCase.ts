@@ -1,5 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { inject, injectable } from "tsyringe";
+import { AppError } from "../../../../errors/AppError";
 import { ISpecificationsRepository } from "../../repositories/ISpecificationsRepository";
 
 
@@ -20,7 +21,7 @@ class CreateSpecificationUseCase {
 
         if (specificationAlreadyExists) {
 
-            throw new Error("Specification Already exists!");
+            throw new AppError("Specification Already exists!");
         }
 
         await this.specificationsRepository.create({
