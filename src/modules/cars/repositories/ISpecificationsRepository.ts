@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { Specification } from "../entities/Specification";
+import { Specification } from "../infra/typeorm/entities/Specification";
 
 interface ICreateSpecificationDTO {
     name: string;
