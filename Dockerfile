@@ -10,4 +10,4 @@ COPY . .
 
 EXPOSE 3333
 
-CMD ["yarn", "run", "dev"]
+CMD ["npm", "run", "dev"]
