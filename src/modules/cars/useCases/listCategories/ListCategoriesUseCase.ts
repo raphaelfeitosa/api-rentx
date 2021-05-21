@@ -4,7 +4,6 @@ import { ICategoriesRepository } from "@modules/cars/repositories/ICategoriesRep
 import { inject, injectable } from "tsyringe";
 
 
-
 @injectable()
 class ListCategoriesUseCase {
 
