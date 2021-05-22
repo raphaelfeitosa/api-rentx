@@ -3,9 +3,11 @@ import { IUsersRepository } from "@modules/accounts/repositories/IUserRepository
 import { CarsRepository } from "@modules/cars/infra/repositories/CarsRepository";
 import { CategoriesRepository } from "@modules/cars/infra/repositories/CategoriesRepository";
 import { SpecificationsRepository } from "@modules/cars/infra/repositories/SpecificationsRepository";
+import { ICarsImageRepository } from "@modules/cars/repositories/ICarsImageRepository";
 import { ICarsRepository } from "@modules/cars/repositories/ICarsRepository";
 import { ICategoriesRepository } from "@modules/cars/repositories/ICategoriesRepository";
 import { ISpecificationsRepository } from "@modules/cars/repositories/ISpecificationsRepository";
+import { CarsImagesRepository } from "@modules/cars/infra/repositories/CarsImagesRepository";
 import { container } from "tsyringe";
 
 //const containerRegister = (): void => {
@@ -27,7 +29,12 @@ container.registerSingleton<IUsersRepository>(
 container.registerSingleton<ICarsRepository>(
     "CarsRepository",
     CarsRepository
-)
+);
+
+container.registerSingleton<ICarsImageRepository>(
+    "CarsImagesRepository",
+    CarsImagesRepository
+);
 //}
 
 //export { containerRegister };
