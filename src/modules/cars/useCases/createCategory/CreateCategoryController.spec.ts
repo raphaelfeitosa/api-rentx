@@ -9,7 +9,7 @@ import { Connection } from "typeorm";
 
 
 let connection: Connection;
-describe("should be able to create a new Category", () => {
+describe("Create category Controller", () => {
 
     beforeAll(async () => {
         connection = await createConnection();
