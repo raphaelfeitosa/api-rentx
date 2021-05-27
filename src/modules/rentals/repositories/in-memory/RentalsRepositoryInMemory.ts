@@ -3,7 +3,6 @@ import { Rental } from "@modules/rentals/infra/typeorm/entities/Rental";
 import { IRentalsRepository } from "../IRentalsRepository";
 
 class RentalsRepositoryInMemory implements IRentalsRepository {
-
     rentals: Rental[] = [];
 
     async create({ car_id, expected_return_date, user_id }: ICreateRentalDTO): Promise<Rental> {
@@ -33,6 +32,11 @@ class RentalsRepositoryInMemory implements IRentalsRepository {
     async findById(id: string): Promise<Rental> {
         throw new Error("Method not implemented.");
     }
+
+    async findByUser(user_id: string): Promise<Rental[]> {
+        throw new Error("Method not implemented.");
+    }
+
 
 }
 export { RentalsRepositoryInMemory };
