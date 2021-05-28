@@ -13,6 +13,8 @@ import { IRentalsRepository } from "@modules/rentals/repositories/IRentalsReposi
 import { RentalsRepository } from "@modules/rentals/infra/typeorm/repositories/RentalRepository";
 
 import "@shared/container/providers";
+import { IUsersTokensRepository } from "@modules/accounts/repositories/IUsersTokensRepository";
+import { UsersTokensRepository } from "@modules/accounts/infra/repositories/UsersTokensRepository";
 
 //const containerRegister = (): void => {
 container.registerSingleton<ICategoriesRepository>(
@@ -43,7 +45,12 @@ container.registerSingleton<ICarsImageRepository>(
 container.registerSingleton<IRentalsRepository>(
     "RentalsRepository",
     RentalsRepository
-)
+);
+
+container.registerSingleton<IUsersTokensRepository>(
+    "UsersTokensRepository",
+    UsersTokensRepository
+);
 
 //}
 
