@@ -1,5 +1,5 @@
-import { CreateUserController } from "@modules/accounts/userCases/createUser/CreateUserController";
-import { UpdateUserAvatarController } from "@modules/accounts/userCases/updatedAvatar/UpdateUserAvatarController";
+import { CreateUserController } from "@modules/accounts/useCases/createUser/CreateUserController";
+import { UpdateUserAvatarController } from "@modules/accounts/useCases/updatedAvatar/UpdateUserAvatarController";
 import { Router } from "express";
 import multer from "multer";
 import uploadConfig from "../../../../config/upload";
