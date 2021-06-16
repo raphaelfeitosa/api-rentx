@@ -12,7 +12,7 @@ import uploadConfig from "../../../../config/upload";
 const carsRoutes = Router();
 
 
-const upload = multer(uploadConfig.upload("./tmp/cars"));
+const upload = multer(uploadConfig);
 
 const carsUserController = new CreateCarController();
 const listAvailableCarsController = new ListAvailableCarsController();

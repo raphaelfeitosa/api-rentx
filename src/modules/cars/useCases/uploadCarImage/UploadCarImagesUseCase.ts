@@ -6,7 +6,6 @@ interface IRequest {
     images_name: string[];
 }
 
-
 @injectable()
 class UploadCarImagesUseCase {
     constructor(
