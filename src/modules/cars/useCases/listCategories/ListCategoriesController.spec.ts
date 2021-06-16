@@ -1,16 +1,13 @@
-import { app } from "@shared/infra/http/app";
-import request from "supertest";
 import { hash } from "bcrypt";
+import request from "supertest";
+import { Connection } from "typeorm";
 import { v4 as uuid } from "uuid";
 
+import { app } from "@shared/infra/http/app";
 import createConnection from "@shared/infra/typeorm";
-import { Connection } from "typeorm";
-
-
 
 let connection: Connection;
 describe("should be able to list all available categories", () => {
-
     beforeAll(async () => {
         connection = await createConnection();
         await connection.runMigrations();
@@ -24,7 +21,6 @@ describe("should be able to list all available categories", () => {
                 values('${id}', 'admin', 'admin@rentx.com.br', '${password}', true, 'now()', 'xxx-123')
             `
         );
-
     });
 
     afterAll(async () => {
@@ -33,22 +29,21 @@ describe("should be able to list all available categories", () => {
     });
 
     it("should be able to list all available categories", async () => {
-        const responseToken = await request(app).post("/sessions")
-            .send({
-                email: "admin@rentx.com.br",
-                password: "admin"
-            });
+        const responseToken = await request(app).post("/sessions").send({
+            email: "admin@rentx.com.br",
+            password: "admin",
+        });
 
-        const { refresh_token } = responseToken.body
+        const { refresh_token } = responseToken.body;
 
         await request(app)
             .post("/categories")
             .send({
                 name: "Category Supertest",
-                description: "Category Supertest"
+                description: "Category Supertest",
             })
             .set({
-                Authorization: `Bearer ${refresh_token}`
+                Authorization: `Bearer ${refresh_token}`,
             });
 
         const response = await request(app).get("/categories");
@@ -59,6 +54,5 @@ describe("should be able to list all available categories", () => {
         expect(response.body.length).toBe(1);
         expect(response.body[0]).toHaveProperty("id");
         expect(response.body[0].name).toEqual("Category Supertest");
-
     });
 });

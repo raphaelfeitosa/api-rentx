@@ -4,8 +4,8 @@ import { UsersTokensRepositoryInMemory } from "@modules/accounts/repositories/in
 import { DayjsDateProvider } from "@shared/container/providers/DateProvider/implementations/DaysjsDateProvider";
 import { MailProviderInMemory } from "@shared/container/providers/MailProvider/in-memory/MailProviderInMemory";
 import { AppError } from "@shared/errors/AppError";
-import { SendForgotPasswordMailUseCase } from "./SendForgotPasswordMailUseCase";
 
+import { SendForgotPasswordMailUseCase } from "./SendForgotPasswordMailUseCase";
 
 let sendForgotPasswordMailUseCase: SendForgotPasswordMailUseCase;
 let usersRepositoryInMemory: UsersRepositoryInMemory;
@@ -13,7 +13,6 @@ let dateProvider: DayjsDateProvider;
 let usersTokensRepositoryInMemory: UsersTokensRepositoryInMemory;
 let mailProvider: MailProviderInMemory;
 describe("Send Forgot Mail", () => {
-
     beforeEach(() => {
         usersRepositoryInMemory = new UsersRepositoryInMemory();
         dateProvider = new DayjsDateProvider();
@@ -40,18 +39,15 @@ describe("Send Forgot Mail", () => {
         await sendForgotPasswordMailUseCase.execute("teste@teste.com.br");
 
         expect(sendMail).toHaveBeenCalled();
-
     });
 
     it("should be able to send an email if user does not exists", async () => {
-
         await expect(
             sendForgotPasswordMailUseCase.execute("teste123@teste.com.br")
         ).rejects.toEqual(new AppError("User does not exists!"));
     });
 
     it("should be able to create an users token", async () => {
-
         const generateTokenMail = spyOn(usersTokensRepositoryInMemory, "create");
 
         await usersRepositoryInMemory.create({
